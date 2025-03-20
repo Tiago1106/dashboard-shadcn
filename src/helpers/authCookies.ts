@@ -1,13 +1,9 @@
+import api from "@/services/api";
+
 export const setAuthToken = async (token: string) => {
-  await fetch("/api/auth/set-token", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ token }),
-  });
+  await api.post("auth/set-token", { json: { token } });
 };
 
 export const removeAuthToken = async () => {
-  await fetch("/api/auth/remove-token", {
-    method: "POST",
-  });
+  await api.post("auth/remove-token");
 };

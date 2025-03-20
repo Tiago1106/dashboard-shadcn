@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Geist } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider"
 
-const interSans = Inter({
+const geistSans = Geist({
   variable: "--font-inter-sans",
   subsets: ["latin"],
 });
@@ -21,7 +21,7 @@ export default function RootLayout({
     <html 
       lang="en" suppressHydrationWarning>
       <body
-        className={`${interSans.variable} antialiased`}
+        className={`${geistSans.variable} antialiased`}
       >
         <ThemeProvider
           attribute="class"
