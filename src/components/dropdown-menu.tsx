@@ -1,3 +1,9 @@
+'use client'
+
+import { useRouter } from "next/navigation";
+
+import { removeAuthToken } from "@/helpers/authCookies";
+
 import {
   DropdownMenu as DropdownMenuUi,
   DropdownMenuContent,
@@ -10,6 +16,13 @@ import {
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar"
 
 export function DropdownMenu() {
+  const router = useRouter()
+  
+  const handleLogout = async () => {
+    await removeAuthToken();
+    router.push("/sign-in");
+  };
+  
   return (
     <DropdownMenuUi>
       <DropdownMenuTrigger asChild>
@@ -30,7 +43,7 @@ export function DropdownMenu() {
           </DropdownMenuItem>
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
-        <DropdownMenuItem>
+        <DropdownMenuItem onClick={handleLogout}>
           Sair
         </DropdownMenuItem>
       </DropdownMenuContent>
