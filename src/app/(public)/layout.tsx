@@ -4,8 +4,7 @@ export default function PublicLayout({
   children: React.ReactNode
 }>) {
   return (
-    <div>
-      <h1>Public</h1>
+    <div className="w-full h-screen items-center justify-center flex">
       {children}
     </div>
   )
