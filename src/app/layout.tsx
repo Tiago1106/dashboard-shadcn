@@ -19,7 +19,7 @@ export default function RootLayout({
 }>) {
   return (
     <html 
-      lang="en">
+      lang="en" suppressHydrationWarning>
       <body
         className={`${interSans.variable} antialiased`}
       >

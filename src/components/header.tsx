@@ -5,7 +5,7 @@ import { useTheme } from "next-themes"
 import { Moon, Sun } from "lucide-react"
 import { SidebarTrigger } from "./ui/sidebar"
 import { Separator } from "./ui/separator"
-import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar"
+import { DropdownMenu } from "./dropdown-menu"
 
 export function AppHeader() {
   const { setTheme, theme } = useTheme()
@@ -21,10 +21,7 @@ export function AppHeader() {
           {theme === 'ligth' ?
             <Moon size={18} onClick={() => setTheme('dark')} />
             : <Sun size={18} onClick={() => setTheme('ligth')} />}
-          <Avatar className="cursor-pointer">
-            <AvatarImage src="https://github.com/shadcn.png" />
-            <AvatarFallback>CN</AvatarFallback>
-          </Avatar>
+          <DropdownMenu />
         </div>
       </div>
       <Separator />
