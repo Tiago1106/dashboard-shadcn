@@ -1,78 +1,52 @@
 "use client"
 
-import { CartesianGrid, Line, LineChart, XAxis } from "recharts"
-
-import {
-  ChartConfig,
-  ChartContainer,
-  ChartTooltip,
-  ChartTooltipContent,
-} from "@/components/ui/chart"
 import CardValues from "@/components/cardValues"
-const chartData = [
-  { month: "January", desktop: 186, mobile: 80 },
-  { month: "February", desktop: 305, mobile: 200 },
-  { month: "March", desktop: 237, mobile: 120 },
-  { month: "April", desktop: 73, mobile: 190 },
-  { month: "May", desktop: 209, mobile: 130 },
-  { month: "June", desktop: 214, mobile: 140 },
-]
-const chartConfig = {
-  desktop: {
-    label: "Desktop",
-    color: "var(--chart-1)",
-  }
-} satisfies ChartConfig
+import { ChartAreaInteractive } from "@/components/chat-area";
 
-const Chart = () => {
-  return (
-    <ChartContainer config={chartConfig}>
-      <LineChart
-        accessibilityLayer
-        data={chartData}
-        margin={{
-          left: 12,
-          right: 12,
-        }}
-      >
-        <CartesianGrid vertical={false} />
-        <XAxis
-          dataKey="month"
-          tickLine={false}
-          axisLine={false}
-          tickMargin={8}
-          tickFormatter={(value) => value.slice(0, 3)}
-        />
-        <ChartTooltip
-          cursor={false}
-          content={<ChartTooltipContent hideLabel />}
-        />
-        <Line
-          dataKey="desktop"
-          type="natural"
-          stroke={chartConfig.desktop.color}
-          strokeWidth={2}
-          dot={{
-            fill: chartConfig.desktop.color,
-          }}
-          activeDot={{
-            r: 6,
-          }}
-        />
-      </LineChart>
-    </ChartContainer>
-  )
-}
+const MOCK_CARDS_VALUES = [
+  {
+    id: 1,
+    title: "$1,250.00",
+    description: "Total Revenue",
+    footerTitle: "Trending up this month",
+    footerDescription: "Visitors for the last 6 months",
+    trending: 12.5,
+  },
+  {
+    id: 2,
+    title: "1,234",
+    description: "New Customers",
+    footerTitle: "Down 20% this period",
+    footerDescription: "Acquisition needs attention",
+    trending: -20,
+  },
+  {
+    id: 3,
+    title: "45,678",
+    description: "Active Accounts",
+    footerTitle: "Strong user retention",
+    footerDescription: "Engagement exceed targets",
+    trending: 12.5,
+  },
+  {
+    id: 4,
+    title: "4.5%",
+    description: "Growth Rate",
+    footerTitle: "Steady performance",
+    footerDescription: "Meets growth projections",
+    trending: 4.5,
+  },
+];
 
 export default function DashboardPage() {
-  console.log('Desktop color:', chartConfig.desktop.color);
   return (
-    <div className="flex flex-row gap-5 w-full">
-      <CardValues title="Teste" description="Teste 2" content={<Chart />} />
-      <CardValues title="Teste" description="Teste 2" content={<Chart />} />
-      <CardValues title="Teste" description="Teste 2" content={<Chart />} />
-      <CardValues title="Teste" description="Teste 2" content={<Chart />} />
+    <div className="flex flex-col gap-4 py-4 md:gap-6 md:py-6">
+      <div className="flex gap-5 w-full md:flex-row flex-col">
+        {MOCK_CARDS_VALUES.map((value) => (
+          <CardValues key={value.id} title={value.title} description={value.description} footerTitle={value.footerTitle} footerDescription={value.footerDescription} trending={value.trending} />
+        ))}
+      </div>
+      <ChartAreaInteractive />
     </div>
-
   )
 }

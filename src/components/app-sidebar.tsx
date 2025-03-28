@@ -28,7 +28,7 @@ export function AppSidebar() {
   
   return (
     <Sidebar variant="sidebar" collapsible="icon">
-      <SidebarContent>
+      <SidebarContent className="bg-background">
         <SidebarGroup>
           <SidebarGroupLabel>App Dashboard</SidebarGroupLabel>
           <SidebarGroupContent>
