@@ -14,12 +14,14 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar"
+import { toast } from "sonner";
 
 export function DropdownMenu() {
   const router = useRouter()
   
   const handleLogout = async () => {
     await removeAuthToken();
+    toast('Você foi deslogado')
     router.push("/sign-in");
   };
   

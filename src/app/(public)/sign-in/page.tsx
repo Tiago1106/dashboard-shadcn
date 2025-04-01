@@ -11,24 +11,42 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { loginSchema } from "./schema";
+import { toast } from "sonner";
 
 export default function Home() {
   const router = useRouter();
   const [passwordVisible, setPasswordVisible] = useState<boolean>(false);
+  const [loading, setLoading] = useState(false);
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
+    setLoading(true);
 
     const form = e.target as HTMLFormElement;
     const formData = new FormData(form);
 
-    const email = formData.get("email") as string;
-    const password = formData.get("password") as string;
+    const data = {
+      email: formData.get("email"),
+      password: formData.get("password"),
+    };
 
-    console.log("Email:", email, "Senha:", password);
+    // 🔍 Validação com Zod
+    const result = loginSchema.safeParse(data);
+
+    if (!result.success) {
+      toast.error(result.error.errors[0].message); // Exibe o erro do Zod
+      setLoading(false);
+      return;
+    }
+
+    console.log("Email:", result.data.email, "Senha:", result.data.password);
 
     await setAuthToken("fakeToken");
+    toast.success('Logado com Sucesso');
     router.push("/");
+
+    setLoading(false);
   };
 
   const handlePasswordVisible = () => {
@@ -47,12 +65,12 @@ export default function Home() {
             <div className="grid w-full items-center gap-4">
               <div className="flex flex-col space-y-1.5">
                 <Label htmlFor="email">E-mail</Label>
-                <Input id="email" type="email" placeholder="Insira seu E-mail" />
+                <Input id="email" name="email" type="email" placeholder="Insira seu E-mail" />
               </div>
               <div className="flex flex-col space-y-1.5">
                 <Label htmlFor="password">Senha</Label>
                 <div className="flex w-full max-w-sm items-center space-x-2">
-                  <Input id="password" type={passwordVisible ? 'text' : 'password'} placeholder="Insira sua Senha" />
+                  <Input id="password" name="password" type={passwordVisible ? 'text' : 'password'} placeholder="Insira sua Senha" />
                   <Button type="button" onClick={handlePasswordVisible}>
                     {passwordVisible ? <EyeClosed /> : <Eye />}
                   </Button>
@@ -64,8 +82,8 @@ export default function Home() {
             <Button type="button" variant='outline'>
               Criar conta
             </Button>
-            <Button type="submit">
-              Login
+            <Button type="submit" disabled={loading}>
+              {loading ? 'Loading' : 'Login'}
             </Button>
           </CardFooter>
         </form>
