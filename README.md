@@ -1,36 +1,48 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Dashboard
 
-## Getting Started
+This is a dashboard project using Next.js, React, and TailwindCSS. The goal is to provide a simple and interactive interface for data visualization and content management. The project utilizes several libraries to make development more efficient and flexible.
 
-First, run the development server:
+## Technologies Used
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- **Next.js** - React framework for server-side rendering and static page generation.
+- **React** - JavaScript library for building user interfaces.
+- **TailwindCSS** - CSS framework for quick and responsive styling.
+- **Radix UI** - Accessible and customizable UI components.
+- **Ky** - HTTP request library.
+- **Zod** - Data validation.
+- **Next Themes** - Support for light and dark themes.
+- **Sonner** - Interactive notifications.
+- **Recharts** - Interactive charts for data visualization.
+- **Class Variance Authority** and **clsx** - Tools for conditional class manipulation.
+- **Next-Auth** (to be implemented) - Authentication with Next.js.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## How to Run the Project
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. Clone the repository:
+   ```bash
+   git clone <repository-url>
+   cd dashboard
+   ```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+2. Install the dependencies:
+   ```bash
+   yarn install
+  ```
 
-## Learn More
+3. Run the development server:
+   ```bash
+   yarn dev
+  ```
 
-To learn more about Next.js, take a look at the following resources:
+4. Access the project in the browser:
+   ```bash
+   http://localhost:3000
+   ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## TODO
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- [ ] **Authentication with Next-Auth**: Add configuration and integration with Next-Auth for user authentication.
+  - [x] Create login and registration pages..
+  - [ ] Create registration pages..
+  - [ ] Configure authentication providers (Google, GitHub, etc).
+  - [x] Add protection to routes that require authentication.
