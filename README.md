@@ -2,6 +2,10 @@
 
 This is a dashboard project using Next.js, React, and TailwindCSS. The goal is to provide a simple and interactive interface for data visualization and content management. The project utilizes several libraries to make development more efficient and flexible.
 
+## Live Demo
+
+You can check out the live demo of the project at [https://dashboard-shadcn-tau.vercel.app](https://dashboard-shadcn-tau.vercel.app).
+
 ## Technologies Used
 
 - **Next.js** - React framework for server-side rendering and static page generation.
